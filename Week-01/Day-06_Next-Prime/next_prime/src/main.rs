@@ -11,18 +11,20 @@ fn next_prime(x: i32) -> i32 {
     let mut cur = x;
     loop {
         if is_prime(cur) {
-            return x;
+            return cur;
         }
         cur += 1;
     }
 }
 
 fn is_prime(x: i32) -> bool {
-    let check = (x as f64).sqrt() as i32;
-    for i in 0..check {
+    if x < 2 {
+        return true;
+    }
+    for i in 2..x {
         if x % i == 0 {
-            return true;
+            return false;
         }
     }
-    false
+    return true;
 }
